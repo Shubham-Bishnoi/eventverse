@@ -239,6 +239,27 @@ input[type=checkbox] { accent-color: var(--primary); width: 13px; height: 13px; 
   .celebration-tabs { padding-top: 0; }.celebration-tab { border-radius: 14px; padding: 15px 18px; }.celebration-tab::before, .celebration-tab::after { display: none; }.celebration-tab-title { font-size: 18px; }.celebration-tab-body > span { max-width: none; }
   .celebration-card { left: 16px; bottom: 16px; right: 16px; padding: 11px 14px; }.celebration-card strong { font-size: 13px; }.celebration-credit { top: 16px; bottom: auto; right: 16px; font-size: 9px; }
 }
+.ribbon-section { position: relative; height: 400vh; background: oklch(.2 .025 151); }
+.ribbon-stage { --card-w: clamp(210px, 23vw, 340px); position: sticky; top: 0; height: 100svh; overflow: hidden; color: var(--primary-foreground); }
+.ribbon-backdrop { position: absolute; inset: -8%; width: 116%; height: 116%; object-fit: cover; filter: blur(48px) saturate(1.2); opacity: .38; animation: scene-reveal .8s ease-out; pointer-events: none; }
+.ribbon-heading { position: absolute; z-index: 2; top: 112px; left: 5%; }
+.ribbon-heading .eyebrow { color: color-mix(in oklab, var(--primary-foreground) 70%, transparent); }
+.ribbon-heading h2 { font-size: 40px; line-height: 1.1; font-weight: 450; margin: 12px 0 0; }
+.ribbon-count { position: absolute; z-index: 2; top: 118px; right: 5%; font-size: 12px; font-variant-numeric: tabular-nums; opacity: .7; }
+.ribbon-mask { position: absolute; left: 0; right: 0; top: 50%; height: min(56svh, 540px); transform: translateY(-42%); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M0 26C320 26 340 0 500 0S680 26 1000 26V74C680 74 660 100 500 100S320 74 0 74Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M0 26C320 26 340 0 500 0S680 26 1000 26V74C680 74 660 100 500 100S320 74 0 74Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat; }
+.ribbon-track { display: flex; gap: 12px; height: 100%; width: max-content; padding-inline: calc(50vw - var(--card-w) / 2); will-change: transform; }
+.ribbon-card { flex: none; width: var(--card-w); height: 100%; margin: 0; overflow: hidden; }
+.ribbon-card img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.62) saturate(.9); transform: scale(1.06); transition: filter .5s ease, transform .8s ease; }
+.ribbon-card[data-active="true"] img { filter: none; transform: scale(1); }
+.ribbon-caption { position: absolute; z-index: 2; left: 50%; bottom: 6svh; transform: translateX(-50%); width: min(90%, 460px); text-align: center; }
+.ribbon-caption strong { display: block; font-size: 26px; font-weight: 500; animation: card-rise .45s ease both; }
+.ribbon-caption p { margin: 6px 0 10px; font-size: 13px; opacity: .78; }
+.ribbon-caption a { font-size: 10px; color: inherit; opacity: .6; text-decoration: none; }
+.ribbon-caption a:hover { opacity: 1; text-decoration: underline; }
+@media (max-width: 760px) {
+  .ribbon-stage { --card-w: 62vw; }.ribbon-heading { top: 92px; left: 6%; }.ribbon-heading h2 { font-size: 28px; }.ribbon-count { top: 96px; right: 6%; }
+  .ribbon-mask { height: 50svh; transform: translateY(-38%); -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M0 12C320 12 340 0 500 0S680 12 1000 12V88C680 88 660 100 500 100S320 88 0 88Z'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M0 12C320 12 340 0 500 0S680 12 1000 12V88C680 88 660 100 500 100S320 88 0 88Z'/%3E%3C/svg%3E"); }.ribbon-track { gap: 8px; }.ribbon-caption { bottom: 4svh; }.ribbon-caption strong { font-size: 21px; }.ribbon-caption p { font-size: 12px; }
+}
 @media (min-width: 1600px) { .hero-content { top: 24%; } .hero-content h1 { font-size: 72px; } .scene-copy { left: 11%; } }
 @media (max-width: 1050px) { .site-nav { gap: 20px; } .hero-content h1 { font-size: 54px; } .hero-content { top: 24%; width: 65%; } .invitation-composition { right: 7%; transform: scale(.86); } .scene-copy { left: 6%; width: 315px; } .scene-copy h2 { font-size: 42px; } .vendor-market { right: 7%; width: 330px; } .chapter-rail { right: 10px; } .venue-caption { right: 6%; } }
 @media (max-width: 760px) {

@@ -1,11 +1,7 @@
 import { useId, useRef, useState, type KeyboardEvent } from "react";
 import { Flower2, Music2, Sparkles, Sun } from "lucide-react";
-import mehndi from "@/assets/celebration-mehndi.jpg";
-import haldi from "@/assets/celebration-haldi.jpg";
-import sangeet from "@/assets/celebration-sangeet.jpg";
-import florals from "@/assets/celebration-florals.jpg";
+import { photos } from "./photos";
 
-// Photos from Wikimedia Commons; their CC BY-SA licences require the visible credit rendered on each image.
 const celebrations = [
   {
     title: "Mehndi Evenings",
@@ -13,13 +9,7 @@ const celebrations = [
       "Henna artists, a dholki playlist and a cosy corner for the stories everyone will retell for years.",
     caption: "Love, written in henna.",
     icon: Sparkles,
-    image: mehndi,
-    alt: "An artist drawing an intricate henna pattern on a hand",
-    credit: {
-      author: "Bandan",
-      license: "CC BY-SA 3.0",
-      url: "https://commons.wikimedia.org/wiki/File:Mehndi_Macro.jpg",
-    },
+    photo: photos.mehndi,
   },
   {
     title: "Haldi Mornings",
@@ -27,13 +17,7 @@ const celebrations = [
       "Marigolds, turmeric and a sunlit setting made for laughter, blessings and a little happy mess.",
     caption: "A little sunshine. A lot of love.",
     icon: Sun,
-    image: haldi,
-    alt: "A bride in yellow laughing as family members apply turmeric paste at her haldi",
-    credit: {
-      author: "The open draft",
-      license: "CC BY-SA 4.0",
-      url: "https://commons.wikimedia.org/wiki/File:Haldi_Ceremony_-_An_Indian_Wedding_Ritual.jpg",
-    },
+    photo: photos.haldi,
   },
   {
     title: "Sangeet Nights",
@@ -41,13 +25,7 @@ const celebrations = [
       "A stage, a great sound system and rehearsed surprises, so every side of the family gets its moment.",
     caption: "One more song. Always.",
     icon: Music2,
-    image: sangeet,
-    alt: "Musicians performing on a floral wedding stage at a sangeet night",
-    credit: {
-      author: "03Ani03",
-      license: "CC BY-SA 4.0",
-      url: "https://commons.wikimedia.org/wiki/File:Indian_wedding_sangeet.jpg",
-    },
+    photo: photos.sangeet,
   },
   {
     title: "Florals & Decor",
@@ -55,13 +33,7 @@ const celebrations = [
       "Marigold arches, flowing drapes and fresh blooms, styled to the colours of your story.",
     caption: "Your vision, in full bloom.",
     icon: Flower2,
-    image: florals,
-    alt: "A garden wedding arch with yellow drapes surrounded by marigolds and flowers",
-    credit: {
-      author: "Megh Banthia",
-      license: "CC BY-SA 4.0",
-      url: "https://commons.wikimedia.org/wiki/File:Sustainable_flower_decoration.jpg",
-    },
+    photo: photos.florals,
   },
 ] as const;
 
@@ -137,8 +109,8 @@ export function CelebrationSwitch() {
           {celebrations.map((item, i) => (
             <img
               key={item.title}
-              src={item.image}
-              alt={active === i ? item.alt : ""}
+              src={item.photo.src}
+              alt={active === i ? item.photo.alt : ""}
               aria-hidden={active !== i}
               data-active={active === i}
               className="celebration-image"
@@ -156,11 +128,11 @@ export function CelebrationSwitch() {
           </div>
           <a
             className="celebration-credit"
-            href={current.credit.url}
+            href={current.photo.credit.url}
             target="_blank"
             rel="noreferrer"
           >
-            Photo: {current.credit.author} · {current.credit.license}
+            Photo: {current.photo.credit.author} · {current.photo.credit.license}
           </a>
         </div>
       </div>

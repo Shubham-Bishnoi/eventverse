@@ -5,6 +5,7 @@ import { ArrowDown, ArrowRight, Heart, Flower2, Sparkles, MapPin, Camera, Utensi
 import { Button } from '@/components/ui/button';
 import { DemoDialog, type Capability } from '@/components/wedding/demo-dialog';
 import { CelebrationSwitch } from '@/components/wedding/celebration-switch';
+import { RibbonGallery } from '@/components/wedding/ribbon-gallery';
 import { chapters, venues, rituals } from '@/components/wedding/journey-data';
 import { loadWeddingPlan } from '@/lib/wedding-plans.functions';
 import type { WeddingPlan } from '@/lib/wedding-plan-schema';
@@ -139,6 +140,7 @@ function Index() {
         <div className="scene-copy">{chapterLabel(7, 'THE BIG DAY')}<h2>Be in the moment.<br />We'll hold the details.</h2><p>The happy tears. The tight hugs. The promises. This day is yours to enjoy.</p><Button variant="paper" className="scene-cta" onClick={() => openDemo()}>Bring it all together <ArrowRight /></Button></div>
         <div className="wedding-checklist"><h3>Everything, beautifully in place.</h3><div><Check /> Your venue. Your people.</div><div><Check /> Every celebration, on time.</div><div><Check /> A thousand little details.</div><div><Heart /> One unforgettable wedding.</div></div>
       </div></section>
+      <RibbonGallery />
       <section id="universe" className="journey-scene universe-scene" data-scene><div className="scene-stage">
         <img className="scene-image" src={chapters[8].image} alt="" loading="lazy" width={1920} height={1088} />
         <div className="universe-intro"><span className="eyebrow">WELCOME TO YOUR EVENTVERSE</span><h2>One wedding.<br />A thousand moving pieces.<br />Beautifully, together.</h2><p>From the first idea to the final goodbye.<br />Your entire wedding. One universe.</p></div>
