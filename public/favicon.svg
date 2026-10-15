@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="interlock"><rect x="27" y="19" width="10" height="11"/></clipPath>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="#253f2d"/>
+  <circle cx="25" cy="38" r="13" fill="none" stroke="#e2c48f" stroke-width="4.5"/>
+  <circle cx="39" cy="38" r="13" fill="none" stroke="#e8a59f" stroke-width="4.5"/>
+  <circle cx="25" cy="38" r="13" fill="none" stroke="#e2c48f" stroke-width="4.5" clip-path="url(#interlock)"/>
+  <path d="M39 9.5 44.5 15 39 22 33.5 15Z" fill="#fbf6ed"/>
+  <path d="M33.5 15h11" stroke="#253f2d" stroke-width="1"/>
+</svg>
