@@ -4,6 +4,7 @@ import { useServerFn } from '@tanstack/react-start';
 import { ArrowDown, ArrowRight, Heart, Flower2, Sparkles, MapPin, Camera, Utensils, Music2, Plus, Check, Users, Mail, CalendarDays, Wallet, ListChecks, Menu, X, Leaf, Gem } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { DemoDialog, type Capability } from '@/components/wedding/demo-dialog';
+import { CelebrationSwitch } from '@/components/wedding/celebration-switch';
 import { chapters, venues, rituals } from '@/components/wedding/journey-data';
 import { loadWeddingPlan } from '@/lib/wedding-plans.functions';
 import type { WeddingPlan } from '@/lib/wedding-plan-schema';
@@ -99,6 +100,7 @@ function Index() {
         <div className="hero-note">MADE FOR YOUR BIG DAY <span>AND EVERYTHING BEFORE IT</span></div>
       </section>
       <div className="welcome-band"><div><h2>A celebration. Not a checklist.</h2><p>Welcome to Eventverse. Let's make it yours.</p></div><div className="welcome-chapters"><div><span>01 — DREAM</span><strong>Imagine your day</strong></div><div><span>02 — BRING IT TOGETHER</span><strong>Every detail, in place</strong></div><div><span>03 — CELEBRATE</span><strong>Be in the moment</strong></div></div><Button variant="ghost" size="icon" aria-label="Continue to invitations" onClick={() => goTo('invitations')}><ArrowDown /></Button></div>
+      <CelebrationSwitch />
       <section id="invitations" className="journey-scene invite-scene" data-scene><div className="scene-stage">
         <img className="scene-image" src={chapters[1].image} alt="" loading="lazy" width={1920} height={1088} />
         <div className="scene-copy">{chapterLabel(1, 'THE INVITATIONS')}<h2>Good things begin<br />with an invitation.</h2><p>Your favourite people. A little anticipation. An invitation that feels like you.</p><Button variant="paper" className="scene-cta" onClick={() => openDemo()}>Bring your people together <ArrowRight /></Button></div>
