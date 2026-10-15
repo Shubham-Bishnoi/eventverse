@@ -101,6 +101,7 @@ function Index() {
         <div className="hero-note">MADE FOR YOUR BIG DAY <span>AND EVERYTHING BEFORE IT</span></div>
       </section>
       <div className="welcome-band"><div><h2>A celebration. Not a checklist.</h2><p>Welcome to Eventverse. Let's make it yours.</p></div><div className="welcome-chapters"><div><span>01 — DREAM</span><strong>Imagine your day</strong></div><div><span>02 — BRING IT TOGETHER</span><strong>Every detail, in place</strong></div><div><span>03 — CELEBRATE</span><strong>Be in the moment</strong></div></div><Button variant="ghost" size="icon" aria-label="Continue to invitations" onClick={() => goTo('invitations')}><ArrowDown /></Button></div>
+      <RibbonGallery />
       <CelebrationSwitch />
       <section id="invitations" className="journey-scene invite-scene" data-scene><div className="scene-stage">
         <img className="scene-image" src={chapters[1].image} alt="" loading="lazy" width={1920} height={1088} />
@@ -140,7 +141,6 @@ function Index() {
         <div className="scene-copy">{chapterLabel(7, 'THE BIG DAY')}<h2>Be in the moment.<br />We'll hold the details.</h2><p>The happy tears. The tight hugs. The promises. This day is yours to enjoy.</p><Button variant="paper" className="scene-cta" onClick={() => openDemo()}>Bring it all together <ArrowRight /></Button></div>
         <div className="wedding-checklist"><h3>Everything, beautifully in place.</h3><div><Check /> Your venue. Your people.</div><div><Check /> Every celebration, on time.</div><div><Check /> A thousand little details.</div><div><Heart /> One unforgettable wedding.</div></div>
       </div></section>
-      <RibbonGallery />
       <section id="universe" className="journey-scene universe-scene" data-scene><div className="scene-stage">
         <img className="scene-image" src={chapters[8].image} alt="" loading="lazy" width={1920} height={1088} />
         <div className="universe-intro"><span className="eyebrow">WELCOME TO YOUR EVENTVERSE</span><h2>One wedding.<br />A thousand moving pieces.<br />Beautifully, together.</h2><p>From the first idea to the final goodbye.<br />Your entire wedding. One universe.</p></div>

@@ -3,6 +3,7 @@ import { photos, type Photo } from "./photos";
 
 type Moment = { label: string; line: string; photo: Photo };
 const moments = [
+  { label: "Forever", line: "And this is only the beginning.", photo: photos.beach },
   { label: "The first touch", line: "One hand reaching for another.", photo: photos.firstTouch },
   { label: "Hand in hand", line: "Two people. One beautiful decision.", photo: photos.handInHand },
   { label: "The rings", line: "A small circle for a very big promise.", photo: photos.rings },
@@ -26,7 +27,6 @@ const moments = [
   },
   { label: "Wherever you go", line: "Every road is better side by side.", photo: photos.hills },
   { label: "Sunset", line: "Some moments are meant to glow.", photo: photos.sunsetKiss },
-  { label: "Forever", line: "And this is only the beginning.", photo: photos.beach },
 ] as const satisfies readonly Moment[];
 // The ribbon travels left to right, so the story runs right to left in the track.
 const track = [...moments].reverse();

@@ -40,17 +40,13 @@ export const photos = {
   },
   haldi: {
     src: haldi,
-    alt: "A bride in yellow laughing as family members apply turmeric paste at her haldi",
-    credit: commons(
-      "The open draft",
-      "CC BY-SA 4.0",
-      "Haldi_Ceremony_-_An_Indian_Wedding_Ritual.jpg",
-    ),
+    alt: "Family showering a bride and groom with marigold petals under a yellow haldi canopy",
+    credit: unsplash("Rohit Sharma", "DlVEPWJIhvQ"),
   },
   sangeet: {
     src: sangeet,
-    alt: "Musicians performing on a floral wedding stage at a sangeet night",
-    credit: commons("03Ani03", "CC BY-SA 4.0", "Indian_wedding_sangeet.jpg"),
+    alt: "A crowd making heart shapes with their hands under warm stage lights",
+    credit: unsplash("Anthony Delanoix", "hzgs56Ze49s"),
   },
   florals: {
     src: florals,
