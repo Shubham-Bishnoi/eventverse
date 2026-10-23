@@ -5,10 +5,7 @@ import baraat from '@/assets/baraat-celebration.jpg';
 
 export const chapters = [
   { id: 'beginning', label: 'The beginning', image: wedding },
-  { id: 'invitations', label: 'Invitations', image: wedding },
-  { id: 'venue', label: 'The venue', image: palace },
-  { id: 'decor', label: 'Design & decor', image: mandap },
-  { id: 'style', label: 'Wedding looks', image: wedding },
+  { id: 'details', label: 'Every detail', image: wedding },
   { id: 'team', label: 'Your people', image: baraat },
   { id: 'rituals', label: 'The rituals', image: baraat },
   { id: 'wedding', label: 'The big day', image: mandap },
