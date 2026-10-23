@@ -28,8 +28,8 @@ const moments = [
   { label: "Sunset", line: "Some moments are meant to glow.", photo: photos.sunsetKiss },
   { label: "Forever", line: "And this is only the beginning.", photo: photos.beach },
 ] as const satisfies readonly Moment[];
-// The ribbon travels left to right, so the story runs right to left in the track.
-const track = [...moments].reverse();
+// The ribbon travels right to left as the page scrolls down, so the story reads left to right.
+const track = moments;
 
 export function RibbonGallery() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -54,7 +54,7 @@ export function RibbonGallery() {
         1,
         Math.max(0, -section.getBoundingClientRect().top / Math.max(1, distance)),
       );
-      target = (progress - 1) * distance;
+      target = -progress * distance;
     };
     const frame = () => {
       current =
@@ -63,7 +63,7 @@ export function RibbonGallery() {
           : current + (target - current) * 0.14;
       strip.style.transform = `translate3d(${current}px, 0, 0)`;
       const index = Math.min(track.length - 1, Math.max(0, Math.round(-current / stride)));
-      const next = track.length - 1 - index;
+      const next = index;
       if (next !== last) {
         last = next;
         setCentered(next);

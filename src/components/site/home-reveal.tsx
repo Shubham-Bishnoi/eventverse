@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowDown } from "lucide-react";
+import { SilkBackground } from "./silk-background";
 
 const beats = [
   { lead: "Weddings in India are about to be", line: "remembered differently." },
@@ -41,6 +42,7 @@ export function HomeReveal({ onPassedChange }: { onPassedChange: (passed: boolea
   return (
     <section ref={ref} className="home-reveal" aria-label="EventVerse">
       <div className="reveal-stage">
+        <SilkBackground />
         {beats.map((b, i) => (
           <p
             key={b.lead}

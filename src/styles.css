@@ -288,6 +288,10 @@ input[type=checkbox] { accent-color: var(--primary); width: 13px; height: 13px; 
 .home-reveal { position: relative; height: 330svh; background: var(--ink); color: var(--primary-foreground); }
 .reveal-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; display: grid; place-items: center; }
 .reveal-beat { grid-area: 1 / 1; margin: 0; padding: 0 7%; max-width: 1180px; text-align: center; font-size: clamp(34px, 5.2vw, 76px); line-height: 1.08; font-weight: 450; opacity: 0; filter: blur(10px); transform: translateY(28px); transition: opacity 1.2s ease, filter 1.2s ease, transform 1.4s cubic-bezier(.2, .7, .2, 1); pointer-events: none; }
+.silk-background { position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(120% 80% at 30% 20%, color-mix(in oklab, var(--primary) 55%, var(--ink)), var(--ink) 70%); }
+.silk-canvas, .silk-trail { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.silk-canvas { opacity: 0; transition: opacity 1.4s ease; }.silk-canvas[data-ready=true] { opacity: 1; }
+.reveal-beat, .reveal-hint { z-index: 1; }.reveal-beat { position: relative; text-shadow: 0 2px 30px oklch(.15 .02 151 / .6); }
 .reveal-beat span { display: block; text-wrap: balance; }
 .reveal-beat span + span { opacity: .55; transition: opacity 1.4s ease .5s; }
 .reveal-beat[data-active=true] { opacity: 1; filter: none; transform: none; }
