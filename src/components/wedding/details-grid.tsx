@@ -8,11 +8,15 @@ import mandap from "@/assets/floral-mandap.jpg";
 
 // Invitations, venue, decor and styling as one bento grid of tiles: title and label at the
 // bottom, a soft dim and slow zoom on hover. Any tile's media can be a photo or a looping video.
-type Media = { kind: "image"; src: string; alt: string } | { kind: "video"; src: string; poster?: string };
+type Media =
+  { kind: "image"; src: string; alt: string } | { kind: "video"; src: string; poster?: string };
 
 const vibes = ["Royal", "Dreamy", "Minimal", "Vibrant"] as const;
 const looks = [
-  { label: "Lehengas", line: "A little tradition. A little you. Find the wedding look you will love forever." },
+  {
+    label: "Lehengas",
+    line: "A little tradition. A little you. Find the wedding look you will love forever.",
+  },
   { label: "Jewellery", line: "Heirloom details and pieces that make every moment shine." },
   { label: "Makeup", line: "A fresh glow, a favourite lip, a look that feels entirely you." },
   { label: "Groom wear", line: "Timeless sherwanis and thoughtful details for his big moment." },
@@ -21,9 +25,22 @@ const people = ["Family", "Close friends", "College friends", "Colleagues", "Nei
 
 function TileMedia({ media, className }: { media: Media; className?: string }) {
   return media.kind === "video" ? (
-    <video className={`tile-media ${className ?? ""}`} src={media.src} poster={media.poster} autoPlay muted loop playsInline />
+    <video
+      className={`tile-media ${className ?? ""}`}
+      src={media.src}
+      poster={media.poster}
+      autoPlay
+      muted
+      loop
+      playsInline
+    />
   ) : (
-    <img className={`tile-media ${className ?? ""}`} src={media.src} alt={media.alt} loading="lazy" />
+    <img
+      className={`tile-media ${className ?? ""}`}
+      src={media.src}
+      alt={media.alt}
+      loading="lazy"
+    />
   );
 }
 
@@ -95,7 +112,11 @@ export function DetailsGrid({
         <article className="tile tile-venue tile-photo">
           <TileMedia
             key={venue.name}
-            media={{ kind: "image", src: venue.image, alt: `${venue.name} wedding destination inspiration with palace architecture and flowers` }}
+            media={{
+              kind: "image",
+              src: venue.image,
+              alt: `${venue.name} wedding destination inspiration with palace architecture and flowers`,
+            }}
             className="image-crossfade"
           />
           <div className="tile-controls" role="tablist" aria-label="Wedding destinations">
@@ -163,8 +184,18 @@ export function DetailsGrid({
         </article>
 
         <article className="tile tile-decor tile-photo" data-vibe={plan.vibe}>
-          <TileMedia media={{ kind: "image", src: mandap, alt: "A floral mandap with flowing drapes and candlelit palace seating" }} />
-          <div className="tile-controls tile-vibes" role="tablist" aria-label="Every love has a different colour.">
+          <TileMedia
+            media={{
+              kind: "image",
+              src: mandap,
+              alt: "A floral mandap with flowing drapes and candlelit palace seating",
+            }}
+          />
+          <div
+            className="tile-controls tile-vibes"
+            role="tablist"
+            aria-label="Every love has a different colour."
+          >
             {vibes.map((vibe) => (
               <button
                 key={vibe}
@@ -195,10 +226,22 @@ export function DetailsGrid({
         </article>
 
         <article className="tile tile-style tile-photo">
-          <TileMedia media={{ kind: "image", src: wedding, alt: "A bride in an embroidered burgundy lehenga and groom in an ivory sherwani" }} />
+          <TileMedia
+            media={{
+              kind: "image",
+              src: wedding,
+              alt: "A bride in an embroidered burgundy lehenga and groom in an ivory sherwani",
+            }}
+          />
           <div className="tile-controls" role="tablist" aria-label="Wedding styling categories">
             {looks.map((l, i) => (
-              <button key={l.label} role="tab" aria-selected={look === i} className="tile-chip" onClick={() => setLook(i)}>
+              <button
+                key={l.label}
+                role="tab"
+                aria-selected={look === i}
+                className="tile-chip"
+                onClick={() => setLook(i)}
+              >
                 {l.label}
               </button>
             ))}
@@ -207,12 +250,11 @@ export function DetailsGrid({
             title={
               <>
                 A moment.
-                <br />
-                A look. Entirely you.
+                <br />A look. Entirely you.
               </>
             }
             label="04 · OUTFITS & STYLING"
-            line={looks[look]?.line}
+            line={looks[look]!.line}
           />
           <Button
             variant="paper"
