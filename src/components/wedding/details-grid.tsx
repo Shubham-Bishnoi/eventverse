@@ -5,6 +5,7 @@ import type { WeddingPlan } from "@/lib/wedding-plan-schema";
 import { venues } from "./journey-data";
 import wedding from "@/assets/wedding-universe.jpg";
 import mandap from "@/assets/floral-mandap.jpg";
+import couple from "@/assets/invite-couple.jpg";
 
 // Invitations, venue, decor and styling as one bento grid of tiles: title and label at the
 // bottom, a soft dim and slow zoom on hover. Any tile's media can be a photo or a looping video.
@@ -75,7 +76,14 @@ export function DetailsGrid({
         <h2 id="details-title">Every detail, in place.</h2>
       </header>
       <div className="details-grid">
-        <article className="tile tile-invite">
+        <article className="tile tile-invite tile-photo">
+          <TileMedia
+            media={{
+              kind: "image",
+              src: couple,
+              alt: "A bride in a red lehenga and groom in a red sherwani holding hands beneath a floral palace arch",
+            }}
+          />
           <div className="invitation-paper">
             <Flower2 className="invite-flower" strokeWidth={1} />
             <small>TOGETHER WITH THEIR FAMILIES</small>
@@ -107,16 +115,20 @@ export function DetailsGrid({
           <Button variant="paper" className="tile-cta" onClick={openDemo}>
             Bring your people together <ArrowRight />
           </Button>
+          <a
+            className="tile-credit"
+            href="https://unsplash.com/photos/2XXQkrL0k-Q"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Photo: Roshan PMS · Unsplash
+          </a>
         </article>
 
         <article className="tile tile-venue tile-photo">
           <TileMedia
             key={venue.name}
-            media={{
-              kind: "image",
-              src: venue.image,
-              alt: `${venue.name} wedding destination inspiration with palace architecture and flowers`,
-            }}
+            media={{ kind: "image", src: venue.image, alt: venue.alt }}
             className="image-crossfade"
           />
           <div className="tile-controls" role="tablist" aria-label="Wedding destinations">
@@ -132,6 +144,9 @@ export function DetailsGrid({
               </button>
             ))}
           </div>
+          <a className="tile-credit" href={venue.credit.url} target="_blank" rel="noreferrer">
+            Photo: {venue.credit.author} · Unsplash
+          </a>
           <Caption
             title={
               <>

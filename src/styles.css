@@ -257,7 +257,10 @@ input[type=checkbox] { accent-color: var(--primary); width: 13px; height: 13px; 
 .details-heading h2 { margin: 12px 0 0; font-size: clamp(32px, 3.6vw, 52px); line-height: 1.08; font-weight: 450; }
 .details-grid { max-width: 1320px; margin: auto; display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: 300px; gap: 18px; }
 .tile { position: relative; overflow: hidden; border-radius: 4px; background: oklch(.26 .03 151); isolation: isolate; }
-.tile-invite { grid-column: 1 / 5; grid-row: span 2; background: var(--rose-soft); color: var(--foreground); }
+.tile-invite { grid-column: 1 / 5; grid-row: span 2; }
+.tile-invite .tile-media { object-position: 50% 30%; }
+.tile-credit { position: absolute; right: 16px; bottom: 12px; font-size: 9px; color: inherit; opacity: .6; text-decoration: none; }.tile-credit:hover { opacity: 1; text-decoration: underline; }
+.tile-invite .tile-credit { top: 12px; bottom: auto; }
 .tile-venue { grid-column: 5 / 13; grid-row: span 2; }
 .tile-people { grid-column: 1 / 5; background: var(--secondary); color: var(--foreground); padding: 26px 28px; }
 .tile-decor { grid-column: 5 / 9; grid-row: span 2; }
@@ -287,6 +290,7 @@ input[type=checkbox] { accent-color: var(--primary); width: 13px; height: 13px; 
 .tile-vibes .vibe-swatch { width: 12px; height: 12px; outline: none; }
 .tile-invite .invitation-paper { position: absolute; top: 40px; left: 50%; width: 205px; min-height: 0; margin: 0; padding: 28px 20px; transform: translateX(-50%) rotate(-4deg); transition: transform .9s cubic-bezier(.2, .7, .2, 1); }
 .tile-invite:hover .invitation-paper { transform: translateX(-50%) rotate(0deg) translateY(-6px); }
+.tile-invite .invitation-paper { color: var(--foreground); }
 .invitation-paper h4 { font-size: 27px; font-weight: 400; line-height: 1.1; margin: 14px 0; }
 .tile-invite .tile-cta { top: auto; bottom: 26px; right: 26px; }
 .tile-invite .tile-caption { right: 26px; }

@@ -2,6 +2,13 @@ import wedding from '@/assets/wedding-universe.jpg';
 import palace from '@/assets/palace-venue.jpg';
 import mandap from '@/assets/floral-mandap.jpg';
 import baraat from '@/assets/baraat-celebration.jpg';
+import udaipur from '@/assets/venue-udaipur.jpg';
+import jaipur from '@/assets/venue-jaipur.jpg';
+import goa from '@/assets/venue-goa.jpg';
+import delhi from '@/assets/venue-delhi.jpg';
+
+// Real location photography from Unsplash (free licence; the credit is a courtesy).
+const unsplash = (author: string, id: string) => ({ author, url: `https://unsplash.com/photos/${id}` });
 
 export const chapters = [
   { id: 'beginning', label: 'The beginning', image: wedding },
@@ -12,10 +19,10 @@ export const chapters = [
   { id: 'universe', label: 'Your universe', image: palace },
 ] as const;
 export const venues = [
-  { name: 'Udaipur', title: 'A lakeside love story', description: 'Still waters. Royal palaces. A little magic.', image: palace, category: 'LAKESIDE PALACES' },
-  { name: 'Jaipur', title: 'Your own royal chapter', description: 'Rose-coloured courtyards and timeless celebrations.', image: mandap, category: 'ROYAL COURTYARDS' },
-  { name: 'Goa', title: 'Forever, by the water', description: 'An open sky, a gentle breeze, and your favourite people.', image: palace, category: 'WATERSIDE CELEBRATIONS' },
-  { name: 'Delhi NCR', title: 'A grand celebration', description: 'Beautiful gardens, floral mandaps, unforgettable nights.', image: mandap, category: 'GARDEN CELEBRATIONS' },
+  { name: 'Udaipur', title: 'A lakeside love story', description: 'Still waters. Royal palaces. A little magic.', image: udaipur, alt: 'The City Palace of Udaipur at golden hour across Lake Pichola, with a boat in the foreground', credit: unsplash('Jainam Mehta', 'AVFjDGbqiqE'), category: 'LAKESIDE PALACES' },
+  { name: 'Jaipur', title: 'Your own royal chapter', description: 'Rose-coloured courtyards and timeless celebrations.', image: jaipur, alt: 'The pink sandstone facade of the Hawa Mahal in Jaipur', credit: unsplash('Annie Spratt', 'slTVVuk7hZU'), category: 'ROYAL COURTYARDS' },
+  { name: 'Goa', title: 'Forever, by the water', description: 'An open sky, a gentle breeze, and your favourite people.', image: goa, alt: 'Palm trees leaning over a golden beach in Goa at sunset', credit: unsplash('Kotagauni Srinivas', 'WSe6NAwwESA'), category: 'WATERSIDE CELEBRATIONS' },
+  { name: 'Delhi NCR', title: 'A grand celebration', description: 'Beautiful gardens, floral mandaps, unforgettable nights.', image: delhi, alt: "Humayun's Tomb in Delhi rising above its formal gardens at sunrise", credit: unsplash('Zoshua Colah', 'kjSsAu5juH8'), category: 'GARDEN CELEBRATIONS' },
 ] as const;
 export const rituals = [
   { name: 'Mehndi', title: 'Love, written in henna.', description: 'Intricate patterns, secret initials, and an afternoon full of laughter.', time: 'THE FIRST CELEBRATION', image: wedding },
