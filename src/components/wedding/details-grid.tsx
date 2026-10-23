@@ -81,7 +81,7 @@ export function DetailsGrid({
             media={{
               kind: "image",
               src: couple,
-              alt: "A bride in a red lehenga and groom in a red sherwani holding hands beneath a floral palace arch",
+              alt: "Two people holding hands in a meadow beside a lone tree",
             }}
           />
           <div className="invitation-paper">
@@ -117,11 +117,11 @@ export function DetailsGrid({
           </Button>
           <a
             className="tile-credit"
-            href="https://unsplash.com/photos/2XXQkrL0k-Q"
+            href="https://unsplash.com/photos/CCjgYjUudxE"
             target="_blank"
             rel="noreferrer"
           >
-            Photo: Roshan PMS · Unsplash
+            Photo · Unsplash
           </a>
         </article>
 

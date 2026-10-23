@@ -19,10 +19,10 @@ export const chapters = [
   { id: 'universe', label: 'Your universe', image: palace },
 ] as const;
 export const venues = [
-  { name: 'Udaipur', title: 'A lakeside love story', description: 'Still waters. Royal palaces. A little magic.', image: udaipur, alt: 'The City Palace of Udaipur at golden hour across Lake Pichola, with a boat in the foreground', credit: unsplash('Jainam Mehta', 'AVFjDGbqiqE'), category: 'LAKESIDE PALACES' },
-  { name: 'Jaipur', title: 'Your own royal chapter', description: 'Rose-coloured courtyards and timeless celebrations.', image: jaipur, alt: 'The pink sandstone facade of the Hawa Mahal in Jaipur', credit: unsplash('Annie Spratt', 'slTVVuk7hZU'), category: 'ROYAL COURTYARDS' },
+  { name: 'Udaipur', title: 'A lakeside love story', description: 'Still waters. Royal palaces. A little magic.', image: udaipur, alt: 'The arched gateway and cupolas of the City Palace in Udaipur under a blue sky', credit: unsplash('Vivek', '1pNm4DFts4U'), category: 'LAKESIDE PALACES' },
+  { name: 'Jaipur', title: 'Your own royal chapter', description: 'Rose-coloured courtyards and timeless celebrations.', image: jaipur, alt: 'The pink sandstone facade of the Hawa Mahal in Jaipur at golden hour', credit: unsplash('Dexter Fernandes', 'y97sM41-g9k'), category: 'ROYAL COURTYARDS' },
   { name: 'Goa', title: 'Forever, by the water', description: 'An open sky, a gentle breeze, and your favourite people.', image: goa, alt: 'Palm trees leaning over a golden beach in Goa at sunset', credit: unsplash('Kotagauni Srinivas', 'WSe6NAwwESA'), category: 'WATERSIDE CELEBRATIONS' },
-  { name: 'Delhi NCR', title: 'A grand celebration', description: 'Beautiful gardens, floral mandaps, unforgettable nights.', image: delhi, alt: "Humayun's Tomb in Delhi rising above its formal gardens at sunrise", credit: unsplash('Zoshua Colah', 'kjSsAu5juH8'), category: 'GARDEN CELEBRATIONS' },
+  { name: 'Delhi NCR', title: 'A grand celebration', description: 'Beautiful gardens, floral mandaps, unforgettable nights.', image: delhi, alt: "Humayun's Tomb in Delhi behind tall palms and a wide green lawn", credit: unsplash('Junaid Ahmad Ansari', '9WP-NVh2d6U'), category: 'GARDEN CELEBRATIONS' },
 ] as const;
 export const rituals = [
   { name: 'Mehndi', title: 'Love, written in henna.', description: 'Intricate patterns, secret initials, and an afternoon full of laughter.', time: 'THE FIRST CELEBRATION', image: wedding },
