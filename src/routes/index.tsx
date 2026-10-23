@@ -1,14 +1,14 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useEffect, useRef, useState } from 'react';
-import { useServerFn } from '@tanstack/react-start';
-import { ArrowDown, ArrowRight, Heart, Flower2, Sparkles, MapPin, Camera, Utensils, Music2, Plus, Check, Users, Mail, CalendarDays, Wallet, ListChecks, Menu, X, Leaf, Gem } from 'lucide-react';
+import { ArrowDown, ArrowRight, Heart, Flower2, Sparkles, MapPin, Camera, Utensils, Music2, Plus, Check, Users, Mail, CalendarDays, Wallet, ListChecks, Gem } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { DemoDialog, type Capability } from '@/components/wedding/demo-dialog';
+import { SiteHeader } from '@/components/site/site-header';
+import { SiteFooter } from '@/components/site/site-footer';
+import { HomeReveal } from '@/components/site/home-reveal';
 import { CelebrationSwitch } from '@/components/wedding/celebration-switch';
 import { RibbonGallery } from '@/components/wedding/ribbon-gallery';
 import { chapters, venues, rituals } from '@/components/wedding/journey-data';
-import { loadWeddingPlan } from '@/lib/wedding-plans.functions';
-import type { WeddingPlan } from '@/lib/wedding-plan-schema';
+import { useWeddingDemo } from '@/components/wedding/use-wedding-demo';
 
 export const Route = createFileRoute('/')({
   head: () => ({ meta: [
@@ -21,35 +21,19 @@ export const Route = createFileRoute('/')({
   ] }),
   component: Index,
 });
-const initialPlan: WeddingPlan = { audience: 'couple', venue: 'Udaipur', vibe: 'Dreamy', ritual: 'Mehndi', outfit_saved: false, tasks: [true, true, false, false, false, false] };
 const vendors = [ { name: 'Photography', note: 'Every fleeting moment.', icon: Camera }, { name: 'Catering', note: 'A celebration of flavour.', icon: Utensils }, { name: 'Decor', note: 'Your dream, in bloom.', icon: Flower2 }, { name: 'Entertainment', note: 'One more song, always.', icon: Music2 } ];
 const styleLabels = ['Lehengas', 'Jewellery', 'Makeup', 'Groom wear'];
 const styleDescriptions = ['A little tradition. A little you. Find the wedding look you will love forever.', 'Heirloom details and pieces that make every moment shine.', 'A fresh glow, a favourite lip, a look that feels entirely you.', 'Timeless sherwanis and thoughtful details for his big moment.'];
 function Index() {
   const [active, setActive] = useState(0);
-  const [plan, setPlan] = useState<WeddingPlan>(initialPlan);
-  const [capability, setCapability] = useState<Capability>();
-  const [demoOpen, setDemoOpen] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [revealed, setRevealed] = useState(false);
+  const { plan, setPlan, openDemo, dialog } = useWeddingDemo();
   const [guests, setGuests] = useState([true, true, true, false, false]);
   const [style, setStyle] = useState(0);
   const [shortlist, setShortlist] = useState<string[]>([]);
   const pageRef = useRef<HTMLDivElement>(null);
-  const loadPlan = useServerFn(loadWeddingPlan);
   const selectedVenue = venues.find(v => v.name === plan.venue) ?? venues[0];
   const selectedRitual = rituals.find(r => r.name === plan.ritual) ?? rituals[0];
-
-  useEffect(() => {
-    let cancelled = false;
-    try {
-      const raw = sessionStorage.getItem('eventverse-plan-capability');
-      if (raw) {
-        const stored: Capability = JSON.parse(raw);
-        loadPlan({ data: stored }).then(saved => { if (!cancelled) { setPlan(saved); setCapability(stored); } }).catch(() => sessionStorage.removeItem('eventverse-plan-capability'));
-      }
-    } catch { /* Storage may be disabled; the live demo remains usable. */ }
-    return () => { cancelled = true; };
-  }, [loadPlan]);
 
   useEffect(() => {
     const root = pageRef.current;
@@ -73,27 +57,14 @@ function Index() {
     update(); window.addEventListener('scroll', onScroll, { passive: true }); window.addEventListener('resize', onScroll);
     return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); cancelAnimationFrame(raf); };
   }, []);
-  function goTo(id: string) { document.getElementById(id)?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' }); setMenuOpen(false); }
-  function openDemo(audience: 'couple' | 'planner' = 'couple') { setPlan(p => ({ ...p, audience })); setDemoOpen(true); setMenuOpen(false); }
-  function onSaved(value: Capability) { setCapability(value); try { sessionStorage.setItem('eventverse-plan-capability', JSON.stringify(value)); } catch { /* Persistence is still stored in Cloud. */ } }
+  function goTo(id: string) { document.getElementById(id)?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' }); }
   const chapterLabel = (n: number, text: string) => <span className="eyebrow"><span className="chapter-number">0{n}</span>{text}</span>;
 
   return <div ref={pageRef}>
-    <a href="#universe" className="skip-link">Skip to wedding demo</a>
-    <header className="site-header">
-      <a href="#beginning" className="brand" aria-label="Eventverse home"><Flower2 className="brand-flower" strokeWidth={1.25} /><span className="brand-word">eventverse</span></a>
-      <nav className="site-nav" aria-label="Main navigation">
-        <Button variant="ghost" className="nav-link" onClick={() => openDemo('couple')}>For couples</Button>
-        <Button variant="ghost" className="nav-link" onClick={() => openDemo('planner')}>For planners</Button>
-        <Button variant="ghost" className="nav-link" onClick={() => goTo('universe')}>Our universe</Button>
-        <Button variant="wedding" className="header-cta" onClick={() => openDemo()}>Try the demo <ArrowRight size={13} /></Button>
-        <Button variant="ghost" size="icon" className="mobile-menu-toggle" aria-label={menuOpen ? 'Close menu' : 'Open menu'} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</Button>
-      </nav>
-      <div className="scroll-progress" />
-    </header>
-    {menuOpen && <nav className="mobile-menu" aria-label="Mobile navigation"><Button variant="ghost" onClick={() => openDemo('couple')}>For couples</Button><Button variant="ghost" onClick={() => openDemo('planner')}>For planners</Button><Button variant="ghost" onClick={() => goTo('rituals')}>The rituals</Button><Button variant="ghost" onClick={() => goTo('universe')}>Our universe</Button></nav>}
-    <nav className="chapter-rail" aria-label="Wedding journey chapters">{chapters.map((chapter, i) => <Button key={chapter.id} variant="ghost" className="rail-button" data-active={active === i} aria-label={chapter.label} aria-current={active === i ? 'step' : undefined} onClick={() => goTo(chapter.id)}><span className="rail-label">{chapter.label}</span><span className="rail-dot" /></Button>)}</nav>
-    <main>
+    <SiteHeader hidden={!revealed} />
+    <nav className="chapter-rail" data-hidden={!revealed} aria-label="Wedding journey chapters">{chapters.map((chapter, i) => <Button key={chapter.id} variant="ghost" className="rail-button" data-active={active === i} aria-label={chapter.label} aria-current={active === i ? 'step' : undefined} onClick={() => goTo(chapter.id)}><span className="rail-label">{chapter.label}</span><span className="rail-dot" /></Button>)}</nav>
+    <main id="main">
+      <HomeReveal onPassedChange={setRevealed} />
       <section id="beginning" className="hero" data-scene>
         <img src={chapters[0].image} alt="An Indian bride and groom holding varmala garlands in a flower-filled palace courtyard" className="hero-image" width={1920} height={1088} fetchPriority="high" />
         <div className="hero-content"><span className="eyebrow">ONE WEDDING. A THOUSAND POSSIBILITIES.</span><h1>Your wedding.<span>One beautiful universe.</span></h1><p>From the first invitation to the final happy tear.<br />Every little detail. Beautifully together.</p><Button variant="ghost" className="begin-button" onClick={() => goTo('invitations')}>Scroll to begin <ArrowDown size={14} /></Button></div>
@@ -148,7 +119,7 @@ function Index() {
         <div className="path-options"><article className="path-option"><h3>I'm planning my wedding.</h3><p>Dream together. Plan together. Celebrate together. Make every step feel like you.</p><Button variant="wedding" className="path-cta" onClick={() => openDemo('couple')}>Enter your Eventverse <ArrowRight /></Button></article><article className="path-option"><h3>I make weddings happen.</h3><p>Your clients, your team, every beautiful detail. Bring all your celebrations into one place.</p><Button variant="paper" className="path-cta" onClick={() => openDemo('planner')}>Explore Eventverse for planners <ArrowRight /></Button></article></div>
       </div></section>
     </main>
-    <footer className="site-footer"><a href="#beginning" className="brand"><Flower2 className="brand-flower" strokeWidth={1.2} /><span className="brand-word">eventverse</span></a><p>Bigger celebrations. A little less chaos. Beautifully together.</p><span>WITH LOVE, IN INDIA <Leaf size={10} className="inline ml-1" /></span></footer>
-    <DemoDialog open={demoOpen} onOpenChange={setDemoOpen} plan={plan} setPlan={setPlan} capability={capability} onSaved={onSaved} />
+    <SiteFooter />
+    {dialog}
   </div>;
 }
