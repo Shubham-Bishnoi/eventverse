@@ -287,6 +287,22 @@ input[type=checkbox] { accent-color: var(--primary); width: 13px; height: 13px; 
   .wedding-scene .scene-copy { top: 14%; left: 5%; width: 90%; padding: 20px; background: color-mix(in oklab, var(--background) 92%, transparent); }.wedding-scene .scene-image { object-position: 72% center; }.wedding-checklist { left: 7%; bottom: 83px; width: 230px; }
   .universe-scene .scene-stage { min-height: 100svh; padding: 70px 7% 50px; }.universe-intro h2 { font-size: 36px; }.universe-intro p { font-size: 12px; }.universe-nodes { gap: 19px; margin: 30px auto; }.universe-nodes span { font-size: 8px; }.path-options { grid-template-columns: 1fr; gap: 14px; }.path-option { padding: 23px; }.path-option h3 { font-size: 18px; }.path-option p { max-width: none; }.site-footer { padding: 50px 4% 28px; }.footer-top { flex-direction: column; gap: 34px; padding: 42px 26px 0; }.flower-meadow { height: 260px; margin-top: -10px; }.demo-dialog { width: 94%; padding: 25px; }.demo-title { font-size: 26px; }
 }
+/* Hero unfold intro: word, sweeping curved strip, one card, then the full hero. */
+.hero-unfold { --wave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M0 26C320 26 340 0 500 0S680 26 1000 26V74C680 74 660 100 500 100S320 74 0 74Z'/%3E%3C/svg%3E"); position: absolute; inset: 0; z-index: 6; background: var(--background); overflow: hidden; cursor: pointer; }
+.hero-unfold[hidden] { display: none; }
+.unfold-word { position: absolute; top: 9%; left: 0; right: 0; display: flex; justify-content: center; overflow: hidden; padding-bottom: .12em; font-size: clamp(38px, 7vw, 108px); font-weight: 500; letter-spacing: .04em; line-height: 1; color: var(--foreground); }
+.unfold-letter { display: inline-block; transform: translateY(110%); }
+.unfold-strip, .unfold-final { -webkit-mask: var(--wave) center / 100% 100% no-repeat; mask: var(--wave) center / 100% 100% no-repeat; }
+.unfold-strip { position: absolute; left: 0; right: 0; top: 50%; height: 44%; transform: translateY(-50%); }
+.unfold-track { display: flex; gap: 10px; height: 100%; width: max-content; transform: translateX(100vw); will-change: transform; }
+.unfold-card { flex: none; width: clamp(170px, 21vw, 300px); height: 100%; object-fit: cover; }
+.unfold-final { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 64%; opacity: 0; -webkit-mask-size: 100% 44%; mask-size: 100% 44%; -webkit-mask-position: center; mask-position: center; }
+.hero[data-unfold=armed] .hero-content > *, .hero[data-unfold=playing] .hero-content > * { opacity: 0; transform: translateY(26px); }
+.hero[data-unfold=done] .hero-content > * { animation: unfold-rise 1s cubic-bezier(.2, .7, .2, 1) both; }
+.hero[data-unfold=done] .hero-content > :nth-child(2) { animation-delay: .12s; }
+.hero[data-unfold=done] .hero-content > :nth-child(3) { animation-delay: .26s; }
+.hero[data-unfold=done] .hero-content > :nth-child(4) { animation-delay: .4s; }
+@keyframes unfold-rise { from { opacity: 0; transform: translateY(26px); } }
 /* Home reveal: type only, one beat per screen, before any navigation appears. */
 .home-reveal { position: relative; height: 330svh; background: var(--ink); color: var(--primary-foreground); }
 .reveal-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; display: grid; place-items: center; }

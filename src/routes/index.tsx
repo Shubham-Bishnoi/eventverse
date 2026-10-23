@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { SiteHeader } from '@/components/site/site-header';
 import { SiteFooter } from '@/components/site/site-footer';
 import { HomeReveal } from '@/components/site/home-reveal';
+import { HeroUnfold } from '@/components/site/hero-unfold';
 import { CelebrationSwitch } from '@/components/wedding/celebration-switch';
 import { RibbonGallery } from '@/components/wedding/ribbon-gallery';
 import { chapters, venues, rituals } from '@/components/wedding/journey-data';
@@ -70,6 +71,7 @@ function Index() {
         <div className="hero-content"><span className="eyebrow">ONE WEDDING. A THOUSAND POSSIBILITIES.</span><h1>Your wedding.<span>One beautiful universe.</span></h1><p>From the first invitation to the final happy tear.<br />Every little detail. Beautifully together.</p><Button variant="ghost" className="begin-button" onClick={() => goTo('invitations')}>Scroll to begin <ArrowDown size={14} /></Button></div>
         <div className="hero-bottom"><span>Your forever starts here.</span><div className="hero-line" /></div>
         <div className="hero-note">MADE FOR YOUR BIG DAY <span>AND EVERYTHING BEFORE IT</span></div>
+        <HeroUnfold image={chapters[0].image} />
       </section>
       <div className="welcome-band"><div><h2>A celebration. Not a checklist.</h2><p>Welcome to Eventverse. Let's make it yours.</p></div><div className="welcome-chapters"><div><span>01 — DREAM</span><strong>Imagine your day</strong></div><div><span>02 — BRING IT TOGETHER</span><strong>Every detail, in place</strong></div><div><span>03 — CELEBRATE</span><strong>Be in the moment</strong></div></div><Button variant="ghost" size="icon" aria-label="Continue to invitations" onClick={() => goTo('invitations')}><ArrowDown /></Button></div>
       <RibbonGallery />
