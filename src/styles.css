@@ -185,14 +185,17 @@ input[type=checkbox] { accent-color: var(--primary); width: 13px; height: 13px; 
 .path-option h3 { font-size: 20px; font-weight: 450; margin: 0 0 10px; }
 .path-option p { font-size: 11px; line-height: 1.7; max-width: 255px; color: var(--muted-foreground); }
 .path-option .path-cta { margin-top: 12px; font-size: 11px; }
-.site-footer { padding: 140px 5% 34px; background: var(--ink); color: var(--primary-foreground); }
-.footer-line { max-width: 1100px; margin: 0 auto 120px; font-size: clamp(32px, 4.6vw, 64px); line-height: 1.1; font-weight: 450; }
+.site-footer { padding: 90px 5% 60px; background: var(--background); }
+.footer-card { position: relative; max-width: 1240px; margin: auto; background: var(--ink); color: var(--primary-foreground); border-radius: 8px; overflow: hidden; box-shadow: 0 30px 80px oklch(.2 .025 151 / .22); }
+.footer-top { position: relative; z-index: 1; display: flex; justify-content: space-between; gap: 48px; padding: 64px 56px 0; }
+.footer-brand .brand { color: inherit; }.footer-brand .brand-flower { color: inherit; width: 30px; height: 30px; }.footer-brand .brand-word { font-size: 26px; }
+.footer-line { margin: 26px 0 18px; font-size: clamp(24px, 2.8vw, 38px); line-height: 1.15; font-weight: 450; max-width: 28ch; text-wrap: balance; }
 .footer-line span { display: block; opacity: .55; }
-.footer-bar { max-width: 1100px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 26px; border-top: 1px solid color-mix(in oklab, var(--primary-foreground) 16%, transparent); }
-.footer-bar .brand { color: inherit; }.footer-bar .brand-flower { color: inherit; }.footer-bar .brand-word { font-size: 18px; }
-.footer-bar nav { display: flex; gap: 26px; }
-.footer-bar nav a { color: inherit; opacity: .7; font-size: 12px; text-decoration: none; }.footer-bar nav a:hover { opacity: 1; }
-.footer-bar > span { font-size: 9px; opacity: .55; }
+.footer-brand small { font-size: 11px; opacity: .55; }
+.footer-links { display: flex; flex-direction: column; gap: 14px; min-width: 170px; padding-top: 4px; }
+.footer-links h2 { margin: 0 0 6px; font-size: 22px; font-weight: 450; }
+.footer-links a { color: inherit; opacity: .72; font-size: 14px; text-decoration: none; transition: opacity .25s; }.footer-links a:hover { opacity: 1; }
+.flower-meadow { display: block; width: 100%; height: 360px; margin-top: 8px; touch-action: pan-y; }
 .demo-dialog { max-width: 510px; max-height: 92svh; overflow-y: auto; border-radius: 8px; padding: 30px; gap: 20px; }
 .demo-title { font-size: 30px; font-weight: 450; margin: 12px 0 8px; }
 .audience-switch { display: flex; background: var(--secondary); padding: 4px; border-radius: 30px; }
@@ -282,7 +285,7 @@ input[type=checkbox] { accent-color: var(--primary); width: 13px; height: 13px; 
   .team-scene .scene-copy { top: 13%; }.team-scene .scene-copy h2 { max-width: 340px; }.vendor-market { top: 47%; right: 7%; width: 86%; gap: 10px; }.vendor-card { height: 126px; padding: 17px; gap: 9px; }.vendor-card span { font-size: 9px; }.vendor-card strong { font-size: 12px; }
   .rituals-scene .scene-copy { top: 12%; left: 5%; width: 90%; padding: 20px; }.rituals-scene .scene-image { object-position: 64% 50%; }.ritual-tabs { width: 90%; flex-wrap: wrap; justify-content: center; bottom: 57px; }.ritual-tabs .ritual-tab { height: 29px; padding: 0 12px; font-size: 9px; }.ritual-subtitle { margin-top: 17px; font-size: 8px; }
   .wedding-scene .scene-copy { top: 14%; left: 5%; width: 90%; padding: 20px; background: color-mix(in oklab, var(--background) 92%, transparent); }.wedding-scene .scene-image { object-position: 72% center; }.wedding-checklist { left: 7%; bottom: 83px; width: 230px; }
-  .universe-scene .scene-stage { min-height: 100svh; padding: 70px 7% 50px; }.universe-intro h2 { font-size: 36px; }.universe-intro p { font-size: 12px; }.universe-nodes { gap: 19px; margin: 30px auto; }.universe-nodes span { font-size: 8px; }.path-options { grid-template-columns: 1fr; gap: 14px; }.path-option { padding: 23px; }.path-option h3 { font-size: 18px; }.path-option p { max-width: none; }.site-footer { padding: 90px 6% 28px; }.footer-line { margin-bottom: 70px; }.footer-bar { flex-direction: column; align-items: flex-start; gap: 18px; }.demo-dialog { width: 94%; padding: 25px; }.demo-title { font-size: 26px; }
+  .universe-scene .scene-stage { min-height: 100svh; padding: 70px 7% 50px; }.universe-intro h2 { font-size: 36px; }.universe-intro p { font-size: 12px; }.universe-nodes { gap: 19px; margin: 30px auto; }.universe-nodes span { font-size: 8px; }.path-options { grid-template-columns: 1fr; gap: 14px; }.path-option { padding: 23px; }.path-option h3 { font-size: 18px; }.path-option p { max-width: none; }.site-footer { padding: 50px 4% 28px; }.footer-top { flex-direction: column; gap: 34px; padding: 42px 26px 0; }.flower-meadow { height: 260px; margin-top: -10px; }.demo-dialog { width: 94%; padding: 25px; }.demo-title { font-size: 26px; }
 }
 /* Home reveal: type only, one beat per screen, before any navigation appears. */
 .home-reveal { position: relative; height: 330svh; background: var(--ink); color: var(--primary-foreground); }
